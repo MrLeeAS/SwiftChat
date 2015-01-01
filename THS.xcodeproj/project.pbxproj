@@ -16,7 +16,6 @@
 		8E0C27AF1A54AB9900A23234 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27AE1A54AB9900A23234 /* CameraViewController.swift */; };
 		8E0C27B11A54C11F00A23234 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B01A54C11F00A23234 /* LoginViewController.swift */; };
 		8E0C27B31A54C12800A23234 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B21A54C12800A23234 /* SignUpViewController.swift */; };
-		8E0C27B51A54C18300A23234 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B41A54C18300A23234 /* Settings.swift */; };
 		8E0C27B71A54C32000A23234 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B61A54C32000A23234 /* TabBarController.swift */; };
 		9A1102CD67A2EE5BAFACE4F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E44E2ED23EF9E85ADC91C3E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -46,7 +45,6 @@
 		8E0C27AE1A54AB9900A23234 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		8E0C27B01A54C11F00A23234 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8E0C27B21A54C12800A23234 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		8E0C27B41A54C18300A23234 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8E0C27B61A54C32000A23234 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8E0C27BA1A54CB1500A23234 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		8EC2B4CE1A55AA64005800B1 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				8E0C27BA1A54CB1500A23234 /* Podfile */,
 				8EC2B4CE1A55AA64005800B1 /* BridgingHeader.h */,
 				8E0C278A1A54A50A00A23234 /* AppDelegate.swift */,
-				8E0C27B41A54C18300A23234 /* Settings.swift */,
 				8E0C27B01A54C11F00A23234 /* LoginViewController.swift */,
 				8E0C27B21A54C12800A23234 /* SignUpViewController.swift */,
 				8E0C27B61A54C32000A23234 /* TabBarController.swift */,
@@ -294,7 +291,6 @@
 				8E0C27AD1A54AB8E00A23234 /* FriendsViewController.swift in Sources */,
 				8E0C27AF1A54AB9900A23234 /* CameraViewController.swift in Sources */,
 				8E0C27AB1A54AB8500A23234 /* InboxViewController.swift in Sources */,
-				8E0C27B51A54C18300A23234 /* Settings.swift in Sources */,
 				8E0C27B11A54C11F00A23234 /* LoginViewController.swift in Sources */,
 				8E0C278B1A54A50A00A23234 /* AppDelegate.swift in Sources */,
 			);
@@ -415,6 +411,7 @@
 				INFOPLIST_FILE = THS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Downloads/workspace/THS/THS/BridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -426,6 +423,7 @@
 				INFOPLIST_FILE = THS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Downloads/workspace/THS/THS/BridgingHeader.h;
 			};
 			name = Release;
 		};

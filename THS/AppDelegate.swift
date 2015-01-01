@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Parse.setApplicationId("N42cx5AWNrd0NahFqEU764OWF2y07TCYZ4p3YnuT", clientKey: "scBBRBU38kBTxzPM0OM0lWjY2uo7CJ3DRD6efjqB")
+
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.rootViewController = vc()
@@ -22,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func vc() -> UIViewController {
-        return Settings.loggedIn() ? TabBarController() : LoginViewController()
+        return PFUser.currentUser() != nil ? TabBarController() : LoginViewController()
     }
 }
 
