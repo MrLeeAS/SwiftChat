@@ -12,6 +12,13 @@ class FriendsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Edit Friends"
 
+        let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
+        navigationItem.rightBarButtonItem = editButton
+    }
+
+    func edit() {
+        navigationController?.pushViewController(EditFriendsViewController(), animated: true)
     }
 }

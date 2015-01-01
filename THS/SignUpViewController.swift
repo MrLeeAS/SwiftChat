@@ -44,7 +44,6 @@ class SignUpViewController: UIViewController {
         newUser.email = emailField?.text
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             if error == nil {
-                PFUser.logInWithUsernameInBackground(newUser.username, password: newUser.password, block: nil)
                 self.presentViewController(TabBarController(), animated: false, completion: nil)
             } else {
                 UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
