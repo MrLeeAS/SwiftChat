@@ -18,6 +18,7 @@
 		8E0C27B31A54C12800A23234 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B21A54C12800A23234 /* SignUpViewController.swift */; };
 		8E0C27B71A54C32000A23234 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C27B61A54C32000A23234 /* TabBarController.swift */; };
 		8E4EA9341A55D52000F4DE28 /* EditFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EA9331A55D52000F4DE28 /* EditFriendsViewController.swift */; };
+		8E5E7A911A565B5B0089F380 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5E7A901A565B5B0089F380 /* MobileCoreServices.framework */; };
 		9A1102CD67A2EE5BAFACE4F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E44E2ED23EF9E85ADC91C3E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		8E0C27B61A54C32000A23234 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8E0C27BA1A54CB1500A23234 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		8E4EA9331A55D52000F4DE28 /* EditFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFriendsViewController.swift; sourceTree = "<group>"; };
+		8E5E7A901A565B5B0089F380 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8EC2B4CE1A55AA64005800B1 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		9E44E2ED23EF9E85ADC91C3E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBBFA03F285029229EBBC619 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E5E7A911A565B5B0089F380 /* MobileCoreServices.framework in Frameworks */,
 				9A1102CD67A2EE5BAFACE4F4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +153,7 @@
 		9A9D3FBB2EBDB230AF3FBEE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E5E7A901A565B5B0089F380 /* MobileCoreServices.framework */,
 				9E44E2ED23EF9E85ADC91C3E /* libPods.a */,
 			);
 			name = Frameworks;
@@ -415,7 +419,7 @@
 				INFOPLIST_FILE = THS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Downloads/workspace/THS/THS/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/Workspace/SnapchatClone/THS/BridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -427,7 +431,7 @@
 				INFOPLIST_FILE = THS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Downloads/workspace/THS/THS/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/Workspace/SnapchatClone/THS/BridgingHeader.h;
 			};
 			name = Release;
 		};

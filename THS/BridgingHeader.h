@@ -10,5 +10,6 @@
 #define THS_BridgingHeader_h
 
 #import <Parse/Parse.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #endif

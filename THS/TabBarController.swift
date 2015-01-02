@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
         friends.title = "Friends"
         var friendsNV = UINavigationController(rootViewController: friends)
         var camera = CameraViewController()
-        camera.title = "Camera"
+        camera.title = "Recepients"
         var cameraNV = UINavigationController(rootViewController: camera)
 
         viewControllers = [inboxNV, friendsNV, cameraNV]
