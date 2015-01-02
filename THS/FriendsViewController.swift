@@ -11,6 +11,7 @@ import UIKit
 class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView: UITableView?
+    var friendsRelation: PFRelation?
     var friends: Array<AnyObject>?
 
     override func viewDidLoad() {
@@ -26,8 +27,26 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(tableView!)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        friendsRelation = PFUser.currentUser().relationForKey("friendsRelation")
+        var query = friendsRelation?.query()
+        query?.orderByAscending("username")
+        query?.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.friends = objects
+                self.tableView?.reloadData()
+            } else {
+                println(error.localizedDescription)
+            }
+        })
+    }
+
     func edit() {
-        navigationController?.pushViewController(EditFriendsViewController(), animated: true)
+        var editVC = EditFriendsViewController()
+        editVC.friends = friends
+        navigationController?.pushViewController(editVC, animated: true)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

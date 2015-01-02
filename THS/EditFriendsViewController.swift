@@ -12,22 +12,27 @@ class EditFriendsViewController: UIViewController, UITableViewDelegate, UITableV
 
     var tableView: UITableView?
     var friends: Array<AnyObject>?
+    var allUsers: Array<AnyObject>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Edit Friends"
-        friends = []
+        allUsers = []
 
         tableView = UITableView(frame: view.bounds, style: UITableViewStyle.Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
         view.addSubview(tableView!)
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
         var query = PFUser.query()
         query.orderByAscending("username")
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                self.friends = objects
+                self.allUsers = objects
                 self.tableView?.reloadData()
             } else {
                 println(error.localizedDescription)
@@ -35,8 +40,12 @@ class EditFriendsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
+    func isFriend(user: PFUser) -> Bool {
+        return (friends! as Array<PFUser>).filter({ (friend: PFUser) -> Bool in friend.objectId == user.objectId}).count > 0
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends!.count
+        return allUsers!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -45,17 +54,34 @@ class EditFriendsViewController: UIViewController, UITableViewDelegate, UITableV
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
-        let user = friends![indexPath.row] as PFUser
+        let user = allUsers![indexPath.row] as PFUser
         cell?.textLabel?.text = user.username
+        cell?.accessoryType = isFriend(user) ? .Checkmark : .None
         return cell!
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         var cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+
+        let user = allUsers![indexPath.row] as PFUser
         var friendsRelation = PFUser.currentUser().relationForKey("friendsRelation")
-        friendsRelation.addObject(friends![indexPath.row] as PFUser)
+
+        if isFriend(user) {
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+            for (var i=0; i<friends!.count; i++) {
+                if user.objectId == friends![i].objectId {
+                    friends?.removeAtIndex(i)
+                    break
+                }
+            }
+            friendsRelation.removeObject(user)
+        } else {
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            friends?.append(user)
+            friendsRelation.addObject(user)
+        }
+
         PFUser.currentUser().saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
             if error != nil {
                 println(error.localizedDescription)
