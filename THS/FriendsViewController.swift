@@ -15,7 +15,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Edit Friends"
         friends = []
 
         let editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
@@ -25,17 +24,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView?.delegate = self
         tableView?.dataSource = self
         view.addSubview(tableView!)
-
-        var query = PFUser.query()
-        query.orderByAscending("username")
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                self.friends = objects
-                self.tableView?.reloadData()
-            } else {
-                println(error.localizedDescription)
-            }
-        }
     }
 
     func edit() {
