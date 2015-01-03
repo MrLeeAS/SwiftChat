@@ -11,11 +11,11 @@ import UIKit
 class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView: UITableView?
-    var friends: Array<AnyObject>?
+    var messages: NSArray?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        friends = []
+        messages = []
 
         let logoutButton = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: "signOut")
         navigationItem.rightBarButtonItem = logoutButton
@@ -26,14 +26,29 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.addSubview(tableView!)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let query = PFQuery(className: "Messages")
+        query.whereKey("recipientIds", equalTo: PFUser.currentUser().objectId)
+        query.orderByDescending("createdAt")
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                self.messages = objects
+                self.tableView?.reloadData()
+            } else {
+                println(error)
+            }
+        }
+    }
+
     func signOut() {
         PFUser.logOut()
         view.window?.rootViewController = LoginViewController()
-//        presentViewController(LoginViewController(), animated: false, completion: nil)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends!.count
+        return messages!.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,8 +57,10 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
-        let user = friends![indexPath.row] as PFUser
-        cell?.textLabel?.text = user.username
+        let message = messages![indexPath.row] as PFObject
+        cell?.textLabel?.text = message["senderName"] as NSString
+        let fileType = message["fileType"] as NSString
+        cell?.imageView?.image = UIImage(named: fileType == "image" ? "icon_image" : "icon_video")
         return cell!
     }
 }
